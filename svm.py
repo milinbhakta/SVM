@@ -5,8 +5,13 @@ y = np.array([1,2,3,4])
 clf = SVC(kernel='linear')
 clf.fit(X, y)
 a = input("Enter The Angle")
-#b = input("Enter Maximum Angle")
-p = clf.predict([[a,a]])
+if a > 360:
+    b = a/360
+    b = a - (b * 360)
+else:
+    b = a
 
-print p
+#b = input("Enter Maximum Angle")
+p = clf.predict([[b,b]])
+print '%d is lies in quadrant %d' %(a,p[0])
 #print '%d is lies in quadrant %d' %(a,p[0])
